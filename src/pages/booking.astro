@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const steps = [
+  {
+    number: "01",
+    title: "Réservez votre créneau",
+    description: "Choisissez la date et l'heure qui vous conviennent le mieux"
+  },
+  {
+    number: "02",
+    title: "Confirmation",
+    description: "Vous recevrez tous les détails de connexion par mail pour notre rendez-vous"
+  },
+  {
+    number: "03",
+    title: "Préparation",
+    description: "Réfléchissez à votre situation actuelle en trading et vos objectifs futurs"
+  },
+  {
+    number: "04",
+    title: "Session",
+    description: "Un échange pour déterminer si nous pouvons avancer ensemble"
+  }
+];
+
+const highlights = [
+  {
+    title: "30 minutes",
+    description: "Session personnalisée",
+    icon: "⏱️"
+  },
+  {
+    title: "Gratuit",
+    description: "Appel découverte",
+    icon: "🎁"
+  },
+  {
+    title: "Expert",
+    description: "Trader rentable",
+    icon: "👨‍🏫"
+  }
+];
+
+const faqs = [
+  {
+    question: "Comment se déroule la session ?",
+    answer: "Notre échange commence par votre parcours et vos objectifs en trading. Je vous présente ensuite l'indicateur et son utilisation au quotidien. Nous discutons de l'accompagnement proposé et de la période d'essai. La session se termine par l'accès à notre communauté."
+  },
+  {
+    question: "Que dois-je préparer ?",
+    answer: "Pensez à votre situation actuelle en trading : vos difficultés, vos réussites, et surtout vos objectifs. Cela nous permettra d'avoir une discussion concrète et de voir si notre accompagnement correspond à vos besoins."
+  }
+];
+---
+
+<Layout title="Réserver un rendez-vous - BandMaster">
+  <main class="bg-[#0a0a0a] relative">
+    <!-- Global Background Effects -->
+    <div class="fixed inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center_top,rgba(44,153,113,0.15),transparent_70%)]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(44,153,113,0.05)_50%,transparent)]"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-[80vh] relative flex items-center">
+      <div class="container mx-auto px-4 relative">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Réservez votre <span class="text-accent">appel</span>
+          </h1>
+          <p class="text-xl text-muted mb-8">
+            Un appel découverte est nécessaire avant tout accès à l'indicateur
+          </p>
+          <div class="flex flex-wrap justify-center gap-6 mb-12">
+            {highlights.map(item => (
+              <div class="relative group">
+                <div class="absolute -inset-0.5 bg-accent opacity-0 group-hover:opacity-75 transition duration-300 rounded-full blur-lg"></div>
+                <div class="absolute -inset-1 bg-gradient-to-br from-accent/50 to-accent-light/30 opacity-0 group-hover:opacity-30 transition duration-300 rounded-full blur-2xl"></div>
+                <div class="relative flex items-center gap-3 bg-[#0f0f0f] px-4 py-2 rounded-full border border-accent/20 group-hover:border-accent/50 transition-all duration-300">
+                  <span class="text-2xl">{item.icon}</span>
+                  <div class="text-sm">
+                    <div class="font-semibold group-hover:text-accent transition-colors">{item.title}</div>
+                    <div class="text-muted text-xs">{item.description}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <a 
+            href="https://calendly.com/jh_academy/30min" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-primary px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25"
+          >
+            Réserver maintenant
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="py-20 relative">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16">
+          Comment ça <span class="text-accent">fonctionne</span> ?
+        </h2>
+        <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {steps.map((step, index) => (
+            <div class="relative group">
+              <div class="absolute -inset-0.5 bg-accent opacity-0 group-hover:opacity-75 transition duration-300 rounded-xl blur-lg"></div>
+              <div class="absolute -inset-1 bg-gradient-to-br from-accent/50 to-accent-light/30 opacity-0 group-hover:opacity-30 transition duration-300 rounded-xl blur-2xl"></div>
+              <div class="relative bg-[#0f0f0f] p-8 rounded-xl border border-accent/20 group-hover:border-accent/50 transition-all duration-300">
+                <div class="text-5xl font-bold text-accent/30 group-hover:text-accent transition-colors">{step.number}</div>
+                <h3 class="text-xl font-bold mt-4 mb-2 group-hover:text-accent transition-colors">{step.title}</h3>
+                <p class="text-muted group-hover:text-white/80 transition-colors">{step.description}</p>
+                {index < steps.length - 1 && (
+                  <div class="hidden md:block absolute -right-12 top-1/2 transform -translate-y-1/2">
+                    <svg class="w-16 h-16 text-accent/10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 relative">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16">Questions fréquentes</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+          {faqs.map(faq => (
+            <div class="relative group">
+              <div class="absolute -inset-0.5 bg-accent opacity-0 group-hover:opacity-75 transition duration-300 rounded-xl blur-lg"></div>
+              <div class="absolute -inset-1 bg-gradient-to-br from-accent/50 to-accent-light/30 opacity-0 group-hover:opacity-30 transition duration-300 rounded-xl blur-2xl"></div>
+              <div class="relative bg-[#0f0f0f] p-8 rounded-xl border border-accent/20 group-hover:border-accent/50 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-4 group-hover:text-accent transition-colors">{faq.question}</h3>
+                <p class="text-muted group-hover:text-white/80 transition-colors">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 relative">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-8">Prêt à transformer votre trading ?</h2>
+          <a 
+            href="https://calendly.com/jh_academy/30min" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-primary px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25"
+          >
+            Réserver ma session
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
